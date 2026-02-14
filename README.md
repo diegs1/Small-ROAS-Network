@@ -23,5 +23,6 @@ What I Learned
 - How router subinterfaces process tagged traffic
 - How default gateways allow inter-VLAN communication
 
-Topology
+Topology\n
+
 <img width="904" height="698" alt="ROAS-img1" src="https://github.com/user-attachments/assets/f6829efb-1cd1-4700-8527-1ba209418233" />
