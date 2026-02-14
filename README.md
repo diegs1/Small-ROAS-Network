@@ -16,4 +16,4 @@ Key Concepts Demonstrated
 - Default gateway configuration per VLAN
 
 Result
-All hosts within the same VLAN can communicate, and inter-VLAN communication is achieved through router subinterfaces over a single trunk link.
+- All hosts within the same VLAN can communicate, and inter-VLAN communication is achieved through router subinterfaces over a single trunk link.
