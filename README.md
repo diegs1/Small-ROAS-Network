@@ -1,4 +1,4 @@
-This project is a small Router-on-a-Stick (ROAS) topology built in Cisco Packet Tracer. It demonstrates VLAN segmentation and inter-VLAN routing using a single trunk link between a Layer 2 switch and a router.
+A small Router-on-a-Stick (ROAS) topology built in Cisco Packet Tracer. It demonstrates VLAN segmentation and inter-VLAN routing using a single trunk link between a Layer 2 switch and a router.
 
 VLANs
 - VLAN 10 – Management
