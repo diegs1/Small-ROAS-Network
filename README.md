@@ -6,8 +6,6 @@ VLANs
 - VLAN 30 – Engineering
 - VLAN 40 – HR
 
-Each VLAN contains three hosts and is assigned its own subnet.
-
 Key Concepts Demonstrated
 - VLAN creation and access port assignment
 - 802.1Q trunk configuration
