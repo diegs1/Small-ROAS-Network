@@ -1,0 +1,136 @@
+========================================
+        ROUTER-ON-A-STICK LAB
+========================================
+
+TOPOLOGY SUMMARY
+----------------
+VLAN 10 - Management   (192.168.1.0/25)     Fa0/2 - Fa0/4
+VLAN 20 - Finance      (192.168.1.128/25)   Fa0/5 - Fa0/7
+VLAN 30 - Engineering  (192.168.2.0/25)     Fa0/8 - Fa0/10
+VLAN 40 - HR           (192.168.2.128/25)   Fa0/11 - Fa0/13
+VLAN 99 - Native VLAN
+Trunk Port: Fa0/1
+Router Interface: G0/0
+
+
+========================================
+            SWITCH CONFIG
+========================================
+
+enable
+configure terminal
+
+! -----------------------
+! VLAN CREATION
+! -----------------------
+
+vlan 10
+ name Management
+exit
+
+vlan 20
+ name Finance
+exit
+
+vlan 30
+ name Engineering
+exit
+
+vlan 40
+ name HR
+exit
+
+vlan 99
+ name Native
+exit
+
+
+! -----------------------
+! ACCESS PORT ASSIGNMENT
+! -----------------------
+
+! VLAN 10 - Management
+interface range fa0/2-4
+ switchport mode access
+ switchport access vlan 10
+exit
+
+! VLAN 20 - Finance
+interface range fa0/5-7
+ switchport mode access
+ switchport access vlan 20
+exit
+
+! VLAN 30 - Engineering
+interface range fa0/8-10
+ switchport mode access
+ switchport access vlan 30
+exit
+
+! VLAN 40 - HR
+interface range fa0/11-13
+ switchport mode access
+ switchport access vlan 40
+exit
+
+
+! -----------------------
+! TRUNK CONFIGURATION
+! -----------------------
+
+interface fa0/1
+ switchport mode trunk
+ switchport trunk native vlan 99
+ switchport trunk allowed vlan 10,20,30,40,99
+ no shutdown
+exit
+
+end
+write memory
+
+
+
+========================================
+            ROUTER CONFIG
+========================================
+
+enable
+configure terminal
+
+interface g0/0
+ no shutdown
+exit
+
+
+! -----------------------
+! SUBINTERFACES
+! -----------------------
+
+interface g0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.1.1 255.255.255.128
+exit
+
+interface g0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.1.129 255.255.255.128
+exit
+
+interface g0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.2.1 255.255.255.128
+exit
+
+interface g0/0.40
+ encapsulation dot1Q 40
+ ip address 192.168.2.129 255.255.255.128
+exit
+
+! Native VLAN 99
+interface g0/0.99
+ encapsulation dot1Q 99 native
+ ip address 192.168.99.1 255.255.255.0
+exit
+
+end
+write memory
